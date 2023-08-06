@@ -393,20 +393,18 @@ export const updateWeather = function (lat, lon) {
 
             }
 
-         });
-
-         /**
+        /**
           * 5 Day Forecast Section
           */
          forecastSection.innerHTML = `
-            <h2 class="title-2" id="forecast-label">5 Days Forecast</h2>
+         <h2 class="title-2" id="forecast-label">5 Days Forecast</h2>
 
-            <div class="card card-lg forecast-card">
-                <ul data-forecast-list></ul>
-            </div>
-         `;
+         <div class="card card-lg forecast-card">
+             <ul data-forecast-list></ul>
+         </div>
+        `;
 
-         for (let i = 7, len = forecastList.length; i < len; i += 8) {
+        for (let i = 7, len = forecastList.length; i < len; i += 8) {
 
             const {
                 main: { temp_max },
@@ -434,10 +432,11 @@ export const updateWeather = function (lat, lon) {
         
                 <p class="label-1">${module.weekDayNames[date.getUTCDay()]}</p>
             `;
-            forecastSection.querySelector("[data-forecast-list]").appendChild(li); // Menggunakan appendChild untuk menambahkan elemen li ke ul
-        }
-        
+            forecastSection.querySelector("[data-forecast-list]").appendChild(li);
+            }
 
+         });
+  
     });
 
 }
