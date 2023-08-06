@@ -7,18 +7,24 @@
 
 'use strict';
 
-import {updateWeather, error404} from "./app.js";
-const defaultLocation = "#/weather?lat=51.5073219&lon=-0.1276474"  // London
+import { updateWeather, error404 } from "./app.js";
+
+const defaultLocation = "#/weather?lat=51.5073219&lon=-0.1276474"; // London
 
 const currentLocation = function () {
-    window.navigator.geolocation.getCurrentPosition(res => {
-        const { latitude, longitude } = res.coords;
+    window.navigator.geolocation.getCurrentPosition(
+        res => {
+            const { latitude, longitude } = res.coords;
 
-        updateWeather(`lat=${latitude}`, `lon=${longitude}`);
-    }, err => {
-        window.location.hash = defaultLocation;
-    })
-}
+            updateWeather(`lat=${latitude}`, `lon=${longitude}`);
+        },
+        err => {
+            window.location.hash = defaultLocation;
+        }
+    );
+};
+
+currentLocation(); // Panggil fungsi saat halaman dimuat
 
 /**
  * @param {string} query Searched Query
